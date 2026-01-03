@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Translations map for UI strings
 const translations = {
     th: {
-        'meta.title': 'Express Center Logistics - ศูนย์รวมบริการขนส่งครบวงจร',
+        'meta.title': 'Express Center - ศูนย์รวมบริการขนส่งครบวงจร',
         'nav.home': 'หน้าแรก',
         'nav.services': 'บริการของเรา',
         'nav.features': 'จุดเด่น',
@@ -194,8 +194,8 @@ const translations = {
         'feature.support.title': 'บริการลูกค้า ในทุกขั้นตอน',
         'feature.support.desc': 'มีทีมงานซัพพอร์ตพร้อมช่วยเหลือและตอบคำถามของคุณตลอดเวลา',
         'cta.title': 'พร้อมเริ่มส่งของกับเราหรือยัง?',
-        'cta.desc': 'ขอใบเสนอราคา หรือปรึกษาผู้เชี่ยวชาญของเราได้ฟรี',
-        'cta.button': 'ขอใบเสนอราคาเลย',
+        'cta.desc': '',
+        'cta.button': 'แอดไลน์สอบถามราคาแต่ละขนส่ง',
         'footer.visitors': 'ผู้เข้าชม:',
         'visitors.label': 'ผู้เข้าชมเว็บไซต์:',
         'disclaimer.logo': '“โลโก้เป็นเครื่องหมายการค้าของแต่ละบริษัท ใช้เพื่อการอ้างอิงเท่านั้น”',
@@ -203,14 +203,14 @@ const translations = {
         'disclaimer.purpose': 'เว็บไซต์นี้ ทำมาเพื่อ อำนวยความสะดวกให้ลูกค้าเช็คเลขพัสดุ เท่านั้น.'
     },
     en: {
-        'meta.title': 'Express Center Logistics - One-stop logistics services',
+        'meta.title': 'Express Center - One-stop logistics services',
         'nav.home': 'Home',
         'nav.services': 'Services',
         'nav.features': 'Features',
         'nav.contact': 'Contact',
         'nav.about': 'About Us',
         'nav.terms': 'Terms & Conditions',
-        'hero.title': 'One-stop logistics hub — we care for your packages every step of the way',
+        'hero.title': 'One-stop logistics — we care for your packages every step of the way',
         'hero.desc': 'A one-stop logistics hub providing care and coordination at every step.',
         'tracking.placeholder': 'Enter your tracking number here... (e.g. TH123456789)',
         'tracking.courierTitle': 'Choose a courier (required):',
@@ -230,7 +230,7 @@ const translations = {
         'feature.speed.title': 'Fast & On-time',
         'feature.speed.desc': 'We prioritize your time with efficient route management',
         'feature.safe.title': 'Maximum Security',
-        'feature.safe.desc': 'Rest assured with GPS tracking and insurance against damage',
+        'feature.safe.desc': '',
         'feature.support.title': 'Customer Support',
         'feature.support.desc': 'Our support team is ready to help and answer your questions',
         'cta.title': 'Ready to ship with us?',
@@ -366,4 +366,37 @@ document.addEventListener('DOMContentLoaded', function () {
         // Start auto slide
         startTimer();
     }
+});
+
+ // Mobile nav toggle for Terms page
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggle = document.querySelector('.nav-toggle');
+            const nav = document.querySelector('.nav-links');
+            if (!toggle || !nav) return;
+            toggle.addEventListener('click', function () {
+                const open = nav.classList.toggle('open');
+                this.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            // Close nav when clicking a link
+            nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        // สลับคลาส active เพื่อแสดง/ซ่อน เมนู
+        navLinks.classList.toggle('active');
+        
+        // (ลูกเล่นเพิ่มเติม) เปลี่ยนไอคอนจาก ขีดๆ เป็น กากบาท (X)
+        const icon = hamburger.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
 });

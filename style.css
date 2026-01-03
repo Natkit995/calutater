@@ -42,6 +42,62 @@
       }
   }
 
+  /* ตั้งค่าปุ่ม Hamburger (ซ่อนในหน้าจอปกติ) */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #333; /* เปลี่ยนสีตามธีมเว็บ */
+}
+/* ตั้งค่าสำหรับมือถือ (Mobile Responsive) */
+@media screen and (max-width: 768px) {
+    
+    /* จัด layout ของ nav ให้รองรับการพับเก็บ */
+    nav {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    /* แสดงปุ่ม Hamburger */
+    .hamburger-menu {
+        display: block;
+    }
+
+    /* ซ่อนเมนูลิงก์ในตอนแรก */
+    .nav-links {
+        display: none; /* ซ่อนไว้ก่อน */
+        width: 100%;
+        flex-direction: column; /* เรียงแนวตั้ง */
+        text-align: center;
+        background-color: #fff; /* สีพื้นหลังเมนู */
+        margin-top: 15px;
+        border-top: 1px solid #eee;
+    }
+
+    /* คลาสนี้จะถูกเพิ่มด้วย JS เพื่อแสดงเมนู */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    /* จัดการปุ่มเปลี่ยนภาษาและ Social ให้ไปอยู่ข้างล่างหรือซ่อนตามต้องการ */
+    /* ในที่นี้เราจะซ่อน social บนมือถือเพื่อความสะอาด หรือจะจัดให้เรียงสวยงามก็ได้ */
+    .lang-th, .social {
+        display: none; /* ซ่อน social/lang ชั่วคราวบนมือถือเพื่อให้เมนูไม่รก */
+    }
+    
+    /* ถ้าต้องการให้ lang/social ไปอยู่ในเมนูด้วย ต้องย้าย HTML หรือเขียน CSS ซับซ้อนกว่านี้ 
+       แต่เบื้องต้นแนะนำให้ซ่อน หรือจัด position ใหม่ */
+}
+
+
+
+
+
 
   a {
       text-decoration: none;
